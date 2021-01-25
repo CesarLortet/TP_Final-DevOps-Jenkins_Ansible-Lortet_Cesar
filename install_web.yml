@@ -1,0 +1,18 @@
+---
+- name: Install ngnix server
+  hosts: web
+  gather_facts: true
+  become: true
+  tasks:
+   - name: Install nginx package
+     apt:
+      name: nginx
+      update_cache: true
+   - name: Install git
+     apt:
+      name: git
+      update_cache: true
+   - name: Cloner le repo
+     git:
+      name: "https://github.com/CesarLortet/TP-Final_DevOps-HTML-Cesar_Lortet.git"
+      dest: /var/www/html/
