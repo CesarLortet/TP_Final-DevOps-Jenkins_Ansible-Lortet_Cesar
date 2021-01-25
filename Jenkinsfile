@@ -17,6 +17,13 @@ pipeline {
     }
 	
     stages {
+		stage('install ansible') {
+			steps {
+				sh 'sudo apt install ansible'
+			}
+		}
+    }
+   stages {
 		stage('playbook') {
 			steps {
 				sh 'ansible-playbook -i inventory install_web.yml'
