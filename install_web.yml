@@ -1,7 +1,6 @@
 ---
 - name: Install ngnix server
   hosts: web
-  sudo: no
   connection: ssh
   remote_user: ubuntu
   gather_facts: true
