@@ -14,6 +14,11 @@ pipeline {
     }
 	
     stages {
+	    stage('playbook') {
+			steps {
+				sh 'chmod 600 ./tp_dev_ynov.pem'
+			}
+		}
 		stage('playbook') {
 			steps {
 				echo 'Go playbook :'
