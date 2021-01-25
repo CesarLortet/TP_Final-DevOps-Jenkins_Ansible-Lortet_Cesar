@@ -1,6 +1,8 @@
 ---
 - name: Install ngnix server
   hosts: web
+  connection: ssh
+  remote_user: ubuntu
   gather_facts: true
   become: true
   tasks:
