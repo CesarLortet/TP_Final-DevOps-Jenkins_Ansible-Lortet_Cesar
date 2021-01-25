@@ -14,16 +14,10 @@ pipeline {
     }
 	
     stages {
-	        stage('chmod') {
-			steps {
-				sh 'chmod 600 ./tp_dev_ynov.pem'
-			}
+	stage('playbook') {
+		steps {
+			sh 'ansible-playbook -i inventory.ini install.yml --key-file "/home/ubuntu/.ssh/id_rsa"'
 		}
-		stage('playbook') {
-			steps {
-				echo 'Go playbook :'
-				sh 'ansible-playbook -i inventory install_web.yml --key-file "tp_dev_ynov.pem"'
-			}
-		}
+	}
     }
 }
