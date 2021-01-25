@@ -19,7 +19,7 @@ pipeline {
     stages {
 		stage('install ansible') {
 			steps {
-				sh 'sudo apt install ansible'
+				sh 'apt install ansible'
 			}
 		}
 		stage('playbook') {
