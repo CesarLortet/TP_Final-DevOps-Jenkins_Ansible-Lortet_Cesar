@@ -14,7 +14,7 @@ pipeline {
     }
 	
     stages {
-	    stage('chmod') {
+	        stage('chmod') {
 			steps {
 				sh 'chmod 600 ./tp_dev_ynov.pem'
 			}
