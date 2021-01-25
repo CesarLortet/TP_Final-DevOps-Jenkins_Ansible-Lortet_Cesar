@@ -1,6 +1,7 @@
 FROM jenkins/jenkins:latest
 USER root
-RUN apt update && apt install -y openssh-server sudo python3 && \
+RUN apt update && \
+    apt install -y openssh-server && \
     apt install ansible && \
     mkdir /var/run/sshd && \
     useradd -m -s /bin/bash -G sudo ansible && \
