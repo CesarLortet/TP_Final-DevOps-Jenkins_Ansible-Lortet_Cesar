@@ -12,6 +12,9 @@ RUN apt update && \
     $(lsb_release -cs) \
     stable" && \
     apt update && \
-    apt -y install docker-ce
+    apt -y install docker-ce && \
+    apt install sshpass -y && \
+    apt install ansible -y
+
 RUN usermod -aG docker jenkins
 USER jenkins
