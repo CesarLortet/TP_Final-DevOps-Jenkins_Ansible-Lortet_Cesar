@@ -16,6 +16,7 @@ pipeline {
     stages {
 		stage('playbook') {
 			steps {
+				echo 'Go playbook :'
 				sh 'ansible-playbook -i inventory install_web.yml'
 			}
 		}
