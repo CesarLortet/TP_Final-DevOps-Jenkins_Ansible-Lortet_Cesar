@@ -2,10 +2,7 @@ properties([pipelineTriggers([githubPush()])])
 
 pipeline {
     agent { 
-      docker {
-        image 'hashicorp/terraform'
-        args  '--entrypoint='
-      }
+      dockerfile true
     }
     
     options {
