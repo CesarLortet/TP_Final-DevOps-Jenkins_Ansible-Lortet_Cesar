@@ -1,20 +1,15 @@
 FROM jenkins/jenkins:latest
 USER root
 RUN apt update && \
-    apt -y install apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common && \
-    curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
-    add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
-    $(lsb_release -cs) \
-    stable" && \
-    apt update && \
-    apt -y install docker-ce && \
-    apt install sshpass -y && \
-    apt install ansible -y
+    apt -y install ansible && \
+    apt -y install openssh-server && \
+    mkdir /var/run/sshd && \
+    useradd -m -s /bin/bash ubuntu
 
-RUN usermod -aG docker jenkins
-USER jenkins
+USER ubuntu
+RUN mkdir /home/ubuntu/playbook && \
+    ssh-keygen -t rsa -f /home/ubuntu/.ssh/id_rsa -N ''
+
+WORKDIR /home/ubuntu/playbook
+
+ENTRYPOINT [ "ansible-playbook" ]
