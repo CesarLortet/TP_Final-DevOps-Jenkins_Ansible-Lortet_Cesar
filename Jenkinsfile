@@ -17,7 +17,7 @@ pipeline {
 		stage('playbook') {
 			steps {
 				echo 'Go playbook :'
-				sh 'ansible-playbook -i inventory install_web.yml'
+				sh 'ansible-playbook -i inventory install_web.yml --key-file "tp_dev_ynov.pem"'
 			}
 		}
     }
